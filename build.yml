@@ -26,7 +26,8 @@
       git:
         repo: git://git.ipxe.org/ipxe.git
         dest: /home/ipxe
-    
+        accept_hostkey: yes
+        
     - name: Configure (uncomment) Console PC BIOS Usage All
       lineinfile:
         dest: /home/ipxe/src/config/console.h
