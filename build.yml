@@ -11,8 +11,8 @@
       - git
       - make
       - build-essential
-      - genisoimage
-      - mkisofs
+      - genisoimage 
+      # - mkisofs - Replaced with genisoimage
       - liblzma-dev
   tasks:
 # Normally I would _always_ use a module vs a command

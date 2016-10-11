@@ -3,8 +3,8 @@
   hosts: all
   vars:
     syslinux_files:
-      - /usr/lib/syslinux/menu.c32
-      - /usr/lib/syslinux/pxelinux.0
+      - /menu.c32
+      - /pxelinux.0
     pkgs:
       - syslinux
       - atftpd
