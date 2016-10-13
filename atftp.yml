@@ -2,6 +2,13 @@
   gather_facts: false
   hosts: all
   vars:
+    ipxe_files:
+      - /ipxe-debug.lkrn
+      - /ipxe-debug.pxe
+      - /ipxe.lkrn
+      - /ipxe.pxe
+      - /undionly-debug.kpxe
+      - /undionly.kpxe
     syslinux_files:
       - /menu.c32
       - /pxelinux.0
@@ -13,6 +20,22 @@
 # Since we are doing this inside a container and didn't
 # want to install additional dependencies I am using command
 # instead.
+    - name: Create tftpboot directory
+      file:
+        path: /tftpboot/
+        state: directory
+        owner: nobody
+        group: nogroup
+ 
+    - name: Copy iPXE files to tftpboot
+      copy:
+        src: "{{ item }}"
+        dest: /tftpboot/
+        owner: nobody
+        group: nogroup
+        mode: 0700 
+      with_items: ipxe_files
+      
     - name: Dependency to build iPXE
       command: apt-get -y install {{ item }}
       with_items: pkgs
