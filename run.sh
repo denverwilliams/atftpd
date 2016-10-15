@@ -1,4 +1,7 @@
 #!/bin/bash
+export IPADDR="$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)"
+export HANLON_PORT="tcp://${IPADDR}:8026"
+
 wget --retry-connrefused --waitretry=5 --read-timeout=5 --timeout=5 -t 10 -q -O /tftpboot/hanlon.ipxe ${HANLON_PORT/tcp/http}/hanlon/api/v1/config/ipxe
 
 if [ $? -ne 0 ]
