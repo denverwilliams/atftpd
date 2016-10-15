@@ -6,7 +6,7 @@
       - /usr/lib/syslinux/menu.c32
       - /usr/lib/syslinux/pxelinux.0
     pkgs:
-      - syslinux
+      - syslinux-common
       - atftpd
   tasks:
 # Normally I would _always_ use a module vs a command
